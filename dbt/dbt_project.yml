@@ -32,6 +32,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   s4_oly:
     +materialized: table
+    stg:
+      +materialized: view
+    dwh:
+      +materialized: table
 
 seeds:
   s4_oly:
