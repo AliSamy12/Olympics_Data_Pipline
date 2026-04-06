@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: stg_summer_games
+    description: One row per Summer Olympic edition. Cleans host formatting, strips footnotes, normalises athlete country codes.
+    columns:
+      - name: year
+        tests: [not_null, unique]
+      - name: host
+        tests: [not_null]
+      - name: n_medal_events
+        tests: [not_null]
+      - name: gold_count
+      - name: silver_count
+      - name: bronze_count
+      - name: total_medals
+        tests: [not_null]
+      - name: athlete_most_medals
+      - name: athlete_most_gold
+
+  - name: stg_winter_games
+    description: One row per Winter Olympic edition. Same cleaning logic as stg_summer_games.
+    columns:
+      - name: year
+        tests: [not_null, unique]
+      - name: host
+        tests: [not_null]
+      - name: n_medal_events
+        tests: [not_null]
+      - name: gold_count
+      - name: silver_count
+      - name: bronze_count
+      - name: total_medals
+        tests: [not_null]
+      - name: athlete_most_medals
+      - name: athlete_most_gold
+
+  - name: stg_summer_sports
+    description: One row per current Summer Olympic discipline. Strips gender tags, unifies dashes, normalises country codes.
+    columns:
+      - name: discipline
+        tests: [not_null, unique]
+      - name: contested
+      - name: n_olympics
+      - name: n_medal_events_2024
+      - name: gold_count
+      - name: silver_count
+      - name: bronze_count
+      - name: total_medals
+        tests: [not_null]
+      - name: athlete_most_medals
+      - name: athlete_most_gold
+
+  - name: stg_winter_sports
+    description: One row per current Winter Olympic discipline. Same cleaning logic as stg_summer_sports.
+    columns:
+      - name: discipline
+        tests: [not_null, unique]
+      - name: contested
+      - name: n_olympics
+      - name: n_medal_events_2026
+      - name: gold_count
+      - name: silver_count
+      - name: bronze_count
+      - name: total_medals
+        tests: [not_null]
+      - name: athlete_most_medals
+      - name: athlete_most_gold
+
+  - name: stg_disc_summer_sports
+    description: One row per discontinued Summer Olympic discipline. Whitespace collapse and dash unification only.
+    columns:
+      - name: discipline
+        tests: [not_null, unique]
+      - name: contested
+      - name: n_olympics
+      - name: gold_count
+      - name: silver_count
+      - name: bronze_count
+      - name: total_medals
+        tests: [not_null]

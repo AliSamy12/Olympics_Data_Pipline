@@ -1,0 +1,7 @@
+s4_oly:
+  outputs:
+    dev:
+      type: duckdb
+      path: /usr/local/airflow/dbt/dev.duckdb
+      threads: 1
+  target: dev

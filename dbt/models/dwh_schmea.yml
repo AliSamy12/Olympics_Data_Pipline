@@ -1,0 +1,142 @@
+version: 2
+
+models:
+
+  - name: dim_sport
+    description: "All Olympic sport disciplines — Summer, Winter and discontinued."
+    columns:
+      - name: sport_id
+        data_tests: [not_null, unique]
+      - name: discipline
+        data_tests: [not_null]
+      - name: season
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Summer', 'Winter']
+      - name: contested
+
+  - name: dim_host
+    description: "Olympic host cities."
+    columns:
+      - name: host_id
+        data_tests: [not_null, unique]
+      - name: city
+        data_tests: [not_null]
+      - name: country
+        data_tests: [not_null]
+
+  - name: dim_athlete
+    description: "Top Olympic athletes extracted from medal columns."
+    columns:
+      - name: athlete_id
+        data_tests: [not_null, unique]
+      - name: name
+        data_tests: [not_null]
+      - name: country
+
+  - name: fact_olympic_games
+    description: "Medal totals per Olympic Games edition."
+    columns:
+      - name: year
+        data_tests: [not_null]
+      - name: host_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_host')
+                field: host_id
+      - name: season
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Summer', 'Winter']
+      - name: number_of_medal_events
+      - name: gold
+        data_tests: [not_null]
+      - name: silver
+        data_tests: [not_null]
+      - name: bronze
+        data_tests: [not_null]
+      - name: total
+        data_tests: [not_null]
+      - name: most_medals_athlete_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_athlete')
+                field: athlete_id
+      - name: most_gold_athlete_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_athlete')
+                field: athlete_id
+
+  - name: fact_olympic_sports
+    description: "Medal totals per sport discipline."
+    columns:
+      - name: sport_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_sport')
+                field: sport_id
+      - name: season
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Summer', 'Winter']
+      - name: contested
+      - name: number_of_olympics
+        data_tests: [not_null]
+      - name: number_of_medal_events
+        data_tests: [not_null]
+      - name: gold
+        data_tests: [not_null]
+      - name: silver
+        data_tests: [not_null]
+      - name: bronze
+        data_tests: [not_null]
+      - name: total
+        data_tests: [not_null]
+      - name: most_medals_athlete_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_athlete')
+                field: athlete_id
+      - name: most_gold_athlete_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_athlete')
+                field: athlete_id
+
+  - name: fact_discontinued_summer_sports
+    description: "Discontinued Summer Olympic sports."
+    columns:
+      - name: sport_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_sport')
+                field: sport_id
+      - name: contested
+        data_tests: [not_null]
+      - name: number_of_olympics
+        data_tests: [not_null]
+      - name: gold
+        data_tests: [not_null]
+      - name: silver
+        data_tests: [not_null]
+      - name: bronze
+        data_tests: [not_null]
+      - name: total
+        data_tests: [not_null]

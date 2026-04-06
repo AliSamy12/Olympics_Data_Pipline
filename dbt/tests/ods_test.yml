@@ -1,0 +1,100 @@
+version: 2
+
+seeds:
+
+  - name: Summer_Olympic_Games
+    description: "Medal counts and top athletes for each Summer Olympic Games edition."
+    columns:
+      - name: games
+        data_tests:
+          - not_null
+          - unique
+      - name: medal
+        data_tests:
+          - not_null
+      - name: host
+        data_tests:
+          - not_null
+      - name: number_of_medal_events
+        data_tests:
+          - not_null
+      - name: total
+        data_tests:
+          - not_null
+
+  - name: Winter_Olympic_Games
+    description: "Medal counts and top athletes for each Winter Olympic Games edition."
+    columns:
+      - name: games
+        data_tests:
+          - not_null
+          - unique
+      - name: medal
+        data_tests:
+          - not_null
+      - name: host
+        data_tests:
+          - not_null
+      - name: number_of_medal_events
+        data_tests:
+          - not_null
+      - name: total
+        data_tests:
+          - not_null
+
+  - name: Summer_Olympic_sports
+    description: "Medal totals by sport discipline across all Summer Olympics."
+    columns:
+      - name: discipline_link_to_medalists_list
+        data_tests:
+          - not_null
+          - unique
+      - name: contested
+        data_tests:
+          - not_null
+      - name: olympics_up_to_conclusion_of_2024_
+        data_tests:
+          - not_null
+      - name: medal_events_in_2024_
+        data_tests:
+          - not_null
+      - name: total
+        data_tests:
+          - not_null
+
+  - name: Winter_Olympic_sports
+    description: "Medal totals by sport discipline across all Winter Olympics."
+    columns:
+      - name: discipline_link_to_medalists_list
+        data_tests:
+          - not_null
+          - unique
+      - name: contested
+        data_tests:
+          - not_null
+      - name: olympics_up_to_2026_
+        data_tests:
+          - not_null
+      - name: medal_events_in_2026_
+        data_tests:
+          - not_null
+      - name: total
+        data_tests:
+          - not_null
+
+  - name: Discontinued_summer_sports
+    description: "Discontinued Summer Olympic disciplines."
+    columns:
+      - name: discipline
+        data_tests:
+          - not_null
+          - unique
+      - name: contested
+        data_tests:
+          - not_null
+      - name: number_of_olympics
+        data_tests:
+          - not_null
+      - name: total
+        data_tests:
+          - not_null

@@ -1,0 +1,4 @@
+astronomer-cosmos
+dbt-duckdb
+beautifulsoup4
+requests

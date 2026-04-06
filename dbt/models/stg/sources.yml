@@ -1,0 +1,66 @@
+version: 2
+
+sources:
+  - name: olympic
+    description: Raw Olympic Games and sports data loaded from CSV files.
+    schema: raw
+    tables:
+      - name: summer_olympic_games
+        columns:
+          - name: Games
+          - name: Host
+          - name: Number of medal events
+          - name: "1st place, gold medalist(s)"
+          - name: "2nd place, silver medalist(s)"
+          - name: "3rd place, bronze medalist(s)"
+          - name: Total
+          - name: "Athlete(s) with the most medals (gold–silver–bronze)"
+          - name: "Athlete(s) with the most gold medals"
+
+      - name: winter_olympic_games
+        columns:
+          - name: Games
+          - name: Host
+          - name: Number of medal events
+          - name: "1st place, gold medalist(s)"
+          - name: "2nd place, silver medalist(s)"
+          - name: "3rd place, bronze medalist(s)"
+          - name: Total
+          - name: "Athlete(s) with the most medals (gold–silver–bronze)"
+          - name: "Athlete(s) with the most gold medals"
+
+      - name: summer_olympic_sports
+        columns:
+          - name: "Discipline (link to medalists list)"
+          - name: Contested
+          - name: "Olympics (up to conclusion of 2024 )"
+          - name: "Medal events (in 2024 )"
+          - name: "1st place, gold medalist(s)"
+          - name: "2nd place, silver medalist(s)"
+          - name: "3rd place, bronze medalist(s)"
+          - name: Total
+          - name: "Athlete(s) with the most medals (gold–silver–bronze)"
+          - name: "Athlete(s) with the most gold medals"
+
+      - name: winter_olympic_sports
+        columns:
+          - name: "Discipline (link to medalists list)"
+          - name: Contested
+          - name: "Olympics (up to 2026 )"
+          - name: "Medal events (in 2026 )"
+          - name: "1st place, gold medalist(s)"
+          - name: "2nd place, silver medalist(s)"
+          - name: "3rd place, bronze medalist(s)"
+          - name: Total
+          - name: "Athlete(s) with the most medals (gold-silver-bronze)"
+          - name: "Athlete(s) with the most gold medals"
+
+      - name: discontinued_summer_sports
+        columns:
+          - name: Discipline
+          - name: Contested
+          - name: Number of Olympics
+          - name: "1st place, gold medalist(s)"
+          - name: "2nd place, silver medalist(s)"
+          - name: "3rd place, bronze medalist(s)"
+          - name: Total
